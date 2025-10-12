@@ -2,7 +2,7 @@ import FormSection from "../sections/FormSection";
 
 export default function Sections() {
     return (
-        <section id="sections" className="section">
+        <section id="sections" className="flex flex-col gap-[20px]">
             <h3 className="flex-row-between">
                 Sections
 

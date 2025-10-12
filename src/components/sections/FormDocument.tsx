@@ -1,7 +1,9 @@
-export default function FormDocument() {
+import type { DocumentItemProps } from "../../types/document";
+
+export default function FormDocument({id, title} : DocumentItemProps) {
     return (
         <article id="new-document">
-            <h4>New document</h4>
+            <h4>{`${title} ${id}`}</h4>
 
             <form id="form-new-document" className="form-new-document">
                 <input type="hidden" name="documentId" id="document-id" value="1" />

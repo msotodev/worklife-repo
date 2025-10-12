@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <LeftNavigation />
-      <main className="content">
+      <main className="bg-[var(--color-alice-blue)] p-[20px] mx-[10px] my-[20px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/documents" element={<Documents />} />

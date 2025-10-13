@@ -1,5 +1,6 @@
 :root {
   --color-primary: #c20352;
+  --color-primary-dark: #aa0047;
   --color-alice-blue: #f0f8ff;
   --color-black: #000000;
   --color-white: #ffffff;
@@ -22,105 +23,10 @@
   box-sizing: border-box;
 }
 
-.all-documents {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.document-item {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  height: 200px;
-  width: 150px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-.new-document:hover,
-.document-item:hover {
-  color: var(--color-primary);
-  cursor: pointer;
-}
-
-.new-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 600px;
-}
-
-.form-new-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.form-new-section input,
+input,
 textarea,
 select {
   padding: 4px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-.form-control {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.btn {
-  background-color: var(--color-primary);
-  color: var(--color-alice-blue);
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-.btn span:nth-child(1) {
-  font-size: 18px;
-}
-
-.all-sections {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.section-item {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px 15px;
-  background-color: white;
-}
-
-.section-item span:nth-child(1) {
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-primary);
-}
-
-/* Global styles */
-
-.flex-row-between {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
-  justify-content: space-between;
 }

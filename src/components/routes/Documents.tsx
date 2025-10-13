@@ -41,7 +41,7 @@ function BtnEditDocument({ id, title, setDocument }: DocumentItemProps) {
     const handleClick = () => setDocument({id, title});
 
     return (
-        <button className="flex flex-col gap-2 justify-between items-start p-[20px] w-[150px] h-[200px] shadow-[0_2px_4px_var(--color-light-hover)] hover:[color:var(--color-primary)]"
+        <button className="flex flex-col gap-2 justify-between items-start bg-white p-[20px] w-[150px] h-[200px] shadow-[0_2px_4px_var(--color-light-hover)] hover:[color:var(--color-primary)]"
             onClick={handleClick}>
             <span className="material-symbols-outlined">picture_as_pdf</span>
             <span>{`${title} ${id}`}</span>

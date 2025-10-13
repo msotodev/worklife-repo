@@ -1,45 +1,137 @@
-export default function FormSection() {
+import { useEffect, useState } from "react";
+import { DEFAULT_SECTION, type SectionItemData, type SectionItemProps } from "../../types/section";
+import Button from "../common/buttons/Button";
+import FormControl from "../common/forms/FormControl";
+
+export default function FormSection(
+    { id, description, type, current, duration, role, addSection, setSection }: SectionItemProps
+) {
+    const [formData, setFormData] = useState<SectionItemData>({
+        id: id,
+        type: type,
+        role: role,
+        duration: duration,
+        current: current,
+        description: description,
+    });
+
+    // sincronizar si cambian los props
+    useEffect(() => {
+        setFormData({ id, type, role, duration, current, description });
+    }, [id, type, role, duration, current, description]);
+
+    const handleTypeChange = (value: string) => {
+        const updated = { ...formData, type: value };
+        setFormData(updated);
+        if (setSection) setSection(updated);
+    };
+
+    const handleRoleChange = (value: string) => {
+        const updated = { ...formData, role: value };
+        setFormData(updated);
+        if (setSection) setSection(updated);
+    };
+
+    const handleDescriptionChange = (value: string) => {
+        const updated = { ...formData, description: value };
+        setFormData(updated);
+        if (setSection) setSection(updated);
+    };
+
+    const handleDurationChange = (value: string) => {
+        const updated = { ...formData, duration: new Date(value) };
+        setFormData(updated);
+        if (setSection) setSection(updated);
+    };
+
+    const handleCurrentChange = (checked: boolean) => {
+        const updated = { ...formData, current: checked };
+        setFormData(updated);
+        if (setSection) setSection(updated);
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (addSection) {
+            addSection({
+                ...formData,
+                duration: formData.duration ? new Date(formData.duration) : undefined,
+            });
+
+            setFormData({
+                id: id,
+                type: type,
+                role: role,
+                duration: duration,
+                current: current,
+                description: description,
+            });
+        }
+    };
+
+    const handleCancel = () => {
+        if (setSection){
+            setSection(DEFAULT_SECTION);
+        }
+    };
+
     return (
-        <article id="new-section" className="new-section">
-            <h4>New Section</h4>
-            <p>This is a form to create a new section</p>
+        <article className="flex flex-col max-w-[400px]">
+            <h3 className="py-2">
+                Sections / {id > 0 ? "Edit" : "New"}
+            </h3>
 
-            <form id="form-new-section" className="form-new-section">
-                <input type="hidden" name="sectionId" id="section-id" value="1" />
-
-                <div className="form-control">
-                    <label htmlFor="section-type">Type</label>
-                    <select name="sectionType" id="section-type">
-                        <option value="-1">Select the type</option>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <FormControl>
+                    <label>Type</label>
+                    <select name="type" value={formData.type}
+                        onChange={e => handleTypeChange(e.target.value)}>
+                        <option value="">Select the type</option>
                         <option value="introduction">Introduction</option>
                         <option value="work-experience">Work Experience</option>
                         <option value="education">Education</option>
                         <option value="soft-skills">Soft Skills</option>
                         <option value="hard-skills">Hard Skills</option>
                     </select>
+                </FormControl>
+                {
+                    formData.type != "" &&
+                    <>
+                        {
+                            formData.type == "work-experience" &&
+                            <>
+                                <FormControl>
+                                    <label>Role</label>
+                                    <input name="role" type="text"
+                                        value={formData.role} onChange={e => handleRoleChange(e.target.value)} />
+                                </FormControl>
+                                <FormControl>
+                                    <label>Duration</label>
+                                    <input name="duration" type="date"
+                                        value={formData.duration ? formData.duration.toISOString().slice(0, 10) : ""}
+                                        onChange={e => handleDurationChange(e.target.value)} />
+                                </FormControl>
+                                <FormControl>
+                                    <label htmlFor="current">Curent</label>
+                                    <input id="current" name="current" type="checkbox"
+                                        checked={formData.current}
+                                        onChange={e => handleCurrentChange(e.target.checked)} />
+                                </FormControl>
+                            </>
+                        }
+                        <FormControl>
+                            <label>Description</label>
+                            <textarea name="description" rows={10}
+                                value={formData.description}
+                                onChange={e => handleDescriptionChange(e.target.value)}></textarea>
+                        </FormControl>
+                    </>
+                }
+                <div className="flex gap-1">
+                    <Button type="button" title="Cancel" colorType="primary-outline" onClick={handleCancel} />
+                    <Button type="submit" title="Add section" colorType="primary" />
                 </div>
-
-                <div id="form-role" className="form-control hide">
-                    <label htmlFor="role">Role</label>
-                    <input type="text" id="role" name="role" />
-                </div>
-
-                <div id="form-duration" className="form-control hide">
-                    <label htmlFor="duration">Duration</label>
-                    <input type="date" id="duration" name="duration" />
-                </div>
-
-                <div id="form-current" className="form-control hide">
-                    <label htmlFor="current">Curent</label>
-                    <input type="checkbox" id="current" name="current" />
-                </div>
-
-                <div id="form-description" className="form-control hide">
-                    <label htmlFor="description">Description</label>
-                    <textarea id="description" name="description" cols={100} rows={20}></textarea>
-                </div>
-
-                <button id="btn-add-section" type="submit" className="btn">Add Section</button>
             </form>
         </article>
     );

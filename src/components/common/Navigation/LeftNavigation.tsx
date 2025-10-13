@@ -4,7 +4,7 @@ import type { MenuItemProps } from "../../../types/menu";
 export default function LeftNavigation() {
     return (
         <nav className="bg-[var(--color-primary)] text-[var(--color-alice-blue)] flex flex-col content-center mt-5 mb-5">
-            <ul id="navigation" className="flex flex-col list-none mt-[35px]">
+            <ul className="flex flex-col list-none mt-[35px]">
                 <MenuItem title="Home"
                     route="/"
                     iconName="home" />

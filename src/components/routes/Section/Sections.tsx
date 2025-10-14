@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useSections } from "../../hooks/useSections";
-import { DEFAULT_SECTION, type SectionItemData, type SectionItemProps } from "../../types/section";
-import Button from "../common/buttons/Button";
-import FormSection from "../sections/FormSection";
+import { useSections } from "../../../hooks/useSections";
+import { DEFAULT_SECTION, type SectionItemData, type SectionItemProps } from "../../../types/section";
+import FormSection from "../../sections/FormSection";
+import Button from "../../common/buttons/Button";
 
 export default function Sections() {
     const { sections, addSection, updateSection } = useSections();

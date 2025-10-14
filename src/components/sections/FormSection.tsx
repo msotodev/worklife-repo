@@ -130,7 +130,7 @@ export default function FormSection(
                 }
                 <div className="flex gap-1">
                     <Button type="button" title="Cancel" colorType="primary-outline" onClick={handleCancel} />
-                    <Button type="submit" title="Add section" colorType="primary" />
+                    <Button type="submit" title="Save section" colorType="primary" />
                 </div>
             </form>
         </article>

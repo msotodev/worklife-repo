@@ -2,9 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import './App.css'
 import LeftNavigation from './components/common/navigation/LeftNavigation'
 import Home from './components/routes/Home';
-import Documents from './components/routes/Documents';
+import Documents from './components/routes/Document/Documents';
 import Temaplates from './components/routes/Templates';
-import Sections from './components/routes/Sections';
+import Sections from "./components/routes/Section/Sections";
 
 function App() {
   return (

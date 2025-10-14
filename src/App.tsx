@@ -4,7 +4,7 @@ import Home from './components/routes/Home';
 import Documents from './components/routes/Document/Documents';
 import Temaplates from './components/routes/Templates';
 import Sections from "./components/routes/Section/Sections";
-import LeftNavigation from "./components/common/navigation/LeftNavigation";
+import LeftNavigation from "./components/common/LeftNavigation";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import type { MenuItemProps } from "../../../types/menu";
+import type { MenuItemProps } from "../../types/menu";
 
 export default function LeftNavigation() {
     return (

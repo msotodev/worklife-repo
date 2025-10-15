@@ -1,7 +1,8 @@
 import { useState } from "react";
 import DocumentPanel from "../document/DocumentPanel";
-import type { DocumentItemData, EditDocumentProps, NewDocumentProps } from "../../types/document";
+import type { DocumentItemData, EditDocumentProps } from "../../types/document";
 import { useDocuments } from "../../hooks/useDocuments";
+import NewDocumentButton from "../common/buttons/NewDocumentButton";
 
 export default function Documents() {
     const { selectedDocument, setSelectedDocument, documents, addDocument, addSection, reorderSections } = useDocuments();
@@ -33,7 +34,7 @@ export default function Documents() {
                                 setDocument={handleEdit}
                                 sections={item.sections} />
                         ))}
-                        <BtnNewDocument noDocuments={documents.length}
+                        <NewDocumentButton noDocuments={documents.length}
                             addDocument={handleNew} />
                     </article>
                 </>
@@ -42,25 +43,12 @@ export default function Documents() {
     );
 }
 
-function BtnNewDocument({ addDocument, noDocuments }: NewDocumentProps) {
-    const handleClick = () => addDocument(
-        { id: noDocuments + 1, title: "New", sections: [] }
-    );
-
-    return (
-        <button className="flex flex-col gap-2 justify-center items-center p-[20px] w-[150px] h-[200px] shadow-[0_2px_4px_var(--color-light-hover)] hover:[color:var(--color-primary)]"
-            onClick={handleClick}>
-            <span className="material-symbols-outlined text-5xl">list_alt_add</span>
-            <span>New document</span>
-        </button>
-    );
-}
 
 function BtnEditDocument({ id, title, sections, setDocument }: EditDocumentProps) {
     const handleClick = () => setDocument({ id, title, sections });
 
     return (
-        <button className="flex flex-col gap-2 justify-between items-start bg-white p-[20px] w-[150px] h-[200px] shadow-[0_2px_4px_var(--color-light-hover)] hover:[color:var(--color-primary)]"
+        <button className="flex flex-col gap-2 justify-between items-start bg-white p-5 w-40 h-52 shadow-md hover:[color:var(--color-primary)]"
             onClick={handleClick}>
             <span className="material-symbols-outlined">picture_as_pdf</span>
             <span>{`${title} ${id}`}</span>

@@ -21,39 +21,41 @@ export default function DocumentPanel({ document, onAddSection, onReorder, setIs
     const handleBack = () => setIsNew(true);
 
     return (
-        <section className="p-4 bg-white shadow-sm">
-            <header className="flex justify-between items-center mb-4">
-                <h2 className="text-lg font-bold">{document.title}</h2>
+        <>
+            <header className="flex justify-between items-center">
+                <h3>{document.title}</h3>
 
                 <Button title="Back to documents"
                     colorType="primary-outline"
                     type="button"
                     onClick={handleBack} />
             </header>
+            <section className="flex flex-col gap-4 p-4 bg-white shadow-sm">
 
-            <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-                <SortableContext
-                    items={document.sections.map((_, index) => index)}
-                    strategy={verticalListSortingStrategy}
-                >
-                    <div className="flex flex-col gap-3">
-                        {document.sections.length > 0 ? (
-                            document.sections.map((section, index) => (
-                                <SortableSection key={index} section={section} index={index} />
-                            ))
-                        ) : (
-                            <p className="text-gray-400 text-sm text-center py-4">
-                                No sections yet. Click “Add Section”.
-                            </p>
-                        )}
+                <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                    <SortableContext
+                        items={document.sections.map((_, index) => index)}
+                        strategy={verticalListSortingStrategy}
+                    >
+                        <div className="flex flex-col gap-3">
+                            {document.sections.length > 0 ? (
+                                document.sections.map((section, index) => (
+                                    <SortableSection key={index} section={section} index={index} />
+                                ))
+                            ) : (
+                                <p className="text-gray-400 text-sm text-center py-4">
+                                    No sections yet. Click “Add Section”.
+                                </p>
+                            )}
 
-                        <div className="flex justify-center items-center">
-                            <SectionSelector document={document} onSelect={onAddSection} />
+                            <div className="flex justify-center items-center">
+                                <SectionSelector document={document} onSelect={onAddSection} />
+                            </div>
                         </div>
-                    </div>
-                </SortableContext>
-            </DndContext>
-        </section>
+                    </SortableContext>
+                </DndContext>
+            </section>
+        </>
     );
 }
 
@@ -68,7 +70,7 @@ function SortableSection({ index, section }: SortableSectionProps) {
 
     return (
         <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-            <SectionItem section={section} />
+            <SectionItem key={section.id} section={section} />
         </div>
     );
 }

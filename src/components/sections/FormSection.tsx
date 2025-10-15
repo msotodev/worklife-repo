@@ -63,12 +63,12 @@ export default function FormSection(
     };
 
     return (
-        <article className="flex flex-col max-w-[400px]">
-            <h3 className="py-2">
+        <article className="flex flex-col gap-4 max-w-[400px]">
+            <h3>
                 Sections / {section.id > 0 ? "Edit" : "New"}
             </h3>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                 <FormControl>
                     <label>Type</label>
                     <select name="type" value={formData.type}

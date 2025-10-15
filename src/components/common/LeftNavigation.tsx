@@ -28,7 +28,7 @@ export default function LeftNavigation() {
 function MenuItem(
     { title, route, iconName }: MenuItemProps
 ) {
-    let className = `flex no-underline text-inherit py-2 w-44 px-4 gap-2 items-center hover:[background-color:var(--color-light-hover)]`;
+    let className = `flex no-underline text-inherit py-2 px-4 gap-2 items-center hover:[background-color:var(--color-light-hover)]`;
 
     const location = useLocation();
     const isActive = location.pathname == route;

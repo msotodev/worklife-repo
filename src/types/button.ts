@@ -1,8 +1,8 @@
 export interface ButtonProps {
-    title: string;
-    type: "submit" | "reset" | "button" | undefined;
+    title?: string;
+    type?: "submit" | "reset" | "button";
     iconName?: string;
     className?: string;
-    colorType: "primary" | "primary-outline";
+    colorType?: "light" | "primary" | "primary-outline";
     onClick?: () => void;
 }

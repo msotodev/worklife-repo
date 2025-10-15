@@ -6,7 +6,7 @@ import Button from "../common/buttons/Button";
 import SectionItem from "../section/SectionItem";
 
 export default function Sections() {
-    const { sections, addSection, updateSection } = useSections();
+    const { sections, addSection, updateSection, removeSection } = useSections();
     const [section, setSection] = useState<SectionItemData>(DEFAULT_SECTION);
 
     const handleNewClick = () => setSection({ id: 0, description: "", type: "" });
@@ -40,8 +40,10 @@ export default function Sections() {
                     </h3>
                     <ul className="flex flex-col gap-2">
                         {sections.map(item => (
-                            <li>
-                                <SectionItem key={item.id} section={item} setSection={setSection} />
+                            <li key={item.id}>
+                                <SectionItem section={item}
+                                    setSection={setSection}
+                                    removeSection={removeSection} />
                             </li>
                         ))}
                     </ul>

@@ -11,6 +11,7 @@ export interface SectionItemData {
 
 export interface SectionItemProps {
   section: SectionItemData;
+  removeSection?: (id: number) => void;
   setSection?: (item: SectionItemData) => void;
   addSection?: (item: SectionItemData) => void;
 }

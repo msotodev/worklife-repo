@@ -23,7 +23,7 @@ export default function SectionSelector({ document, onSelect }: SectionSelectorP
                 <ul className="absolute right-0 mt-2 w-56 bg-white border shadow-lg rounded-lg p-2 z-10 overflow-y-auto max-h-80">
                     {sections.map((section, index) => (
                         <li key={index} onClick={() => handleSectionClick(section)}>
-                            <SectionItem section={section} />
+                            <SectionItem key={section.id} section={section} />
                         </li>
                     ))}
                 </ul>

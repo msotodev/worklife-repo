@@ -20,8 +20,8 @@ export function useSections(
     setSections(newOrder);
   };
 
-  const removeSection = (index: number) =>
-    setSections(sections.filter((_, i) => i !== index));
+  const removeSection = (id: number) =>
+    setSections(sections.filter((item) => item.id !== id));
 
   return { sections, addSection, updateSection, reorderSections, removeSection, clearSections };
 }

@@ -1,11 +1,10 @@
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { arrayMove, SortableContext, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { type DocumentPanelProps } from "../../../types/document";
-import SectionSelector from "../Section/SectionSelector";
-import SectionItem from "../Section/SectionItem";
-import type { SectionItemData } from "../../../types/section";
-import Button from "../../common/buttons/Button";
+import type { DocumentPanelProps, SortableSectionProps } from "../../types/document";
+import Button from "../common/buttons/Button";
+import SectionSelector from "../section/SectionSelector";
+import SectionItem from "../section/SectionItem";
 
 export default function DocumentPanel({ document, onAddSection, onReorder, setIsNew }: DocumentPanelProps) {
     const handleDragEnd = (event: any) => {
@@ -22,7 +21,7 @@ export default function DocumentPanel({ document, onAddSection, onReorder, setIs
     const handleBack = () => setIsNew(true);
 
     return (
-        <section className="p-4 border rounded-xl bg-white shadow-sm">
+        <section className="p-4 bg-white shadow-sm">
             <header className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-bold">{document.title}</h2>
 
@@ -72,9 +71,4 @@ function SortableSection({ index, section }: SortableSectionProps) {
             <SectionItem section={section} />
         </div>
     );
-}
-
-interface SortableSectionProps {
-    index: number;
-    section: SectionItemData;
 }

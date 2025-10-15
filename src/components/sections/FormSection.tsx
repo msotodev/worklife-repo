@@ -4,21 +4,14 @@ import Button from "../common/buttons/Button";
 import FormControl from "../common/forms/FormControl";
 
 export default function FormSection(
-    { id, description, type, current, duration, role, addSection, setSection }: SectionItemProps
+    { section, addSection, setSection }: SectionItemProps
 ) {
-    const [formData, setFormData] = useState<SectionItemData>({
-        id: id,
-        type: type,
-        role: role,
-        duration: duration,
-        current: current,
-        description: description,
-    });
+    const [formData, setFormData] = useState<SectionItemData>(section);
 
     // sincronizar si cambian los props
     useEffect(() => {
-        setFormData({ id, type, role, duration, current, description });
-    }, [id, type, role, duration, current, description]);
+        setFormData(section);
+    }, [section]);
 
     const handleTypeChange = (value: string) => {
         const updated = { ...formData, type: value };
@@ -59,19 +52,12 @@ export default function FormSection(
                 duration: formData.duration ? new Date(formData.duration) : undefined,
             });
 
-            setFormData({
-                id: id,
-                type: type,
-                role: role,
-                duration: duration,
-                current: current,
-                description: description,
-            });
+            setFormData(section);
         }
     };
 
     const handleCancel = () => {
-        if (setSection){
+        if (setSection) {
             setSection(DEFAULT_SECTION);
         }
     };
@@ -79,7 +65,7 @@ export default function FormSection(
     return (
         <article className="flex flex-col max-w-[400px]">
             <h3 className="py-2">
-                Sections / {id > 0 ? "Edit" : "New"}
+                Sections / {section.id > 0 ? "Edit" : "New"}
             </h3>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">

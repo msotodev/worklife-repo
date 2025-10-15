@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useDocuments } from "../../../hooks/useDocuments";
-import { type DocumentItemData, type EditDocumentProps, type NewDocumentProps } from "../../../types/document";
-import DocumentPanel from "./DocumentPanel";
+import DocumentPanel from "../document/DocumentPanel";
+import type { DocumentItemData, EditDocumentProps, NewDocumentProps } from "../../types/document";
+import { useDocuments } from "../../hooks/useDocuments";
 
 export default function Documents() {
     const { selectedDocument, setSelectedDocument, documents, addDocument, addSection, reorderSections } = useDocuments();
@@ -18,7 +18,7 @@ export default function Documents() {
     }
 
     return (
-        <section className="flex flex-col gap-[20px]">
+        <section className="flex flex-col gap-4 p-4 min-h-full overflow-y-auto">
             {!isNew
                 ?
                 <DocumentPanel document={selectedDocument}

@@ -1,16 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css'
 import Home from './components/routes/Home';
-import Documents from './components/routes/Document/Documents';
 import Temaplates from './components/routes/Templates';
-import Sections from "./components/routes/Section/Sections";
 import LeftNavigation from "./components/common/LeftNavigation";
+import Sections from "./components/routes/Sections";
+import Documents from "./components/routes/Documents";
 
 function App() {
   return (
     <>
       <LeftNavigation />
-      <main className="bg-[var(--color-alice-blue)] p-[20px] mx-[10px] my-[20px]">
+      <main className="bg-[var(--color-alice-blue)] mx-[10px] my-[20px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/documents" element={<Documents />} />

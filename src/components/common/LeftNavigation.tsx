@@ -3,8 +3,8 @@ import type { MenuItemProps } from "../../types/menu";
 
 export default function LeftNavigation() {
     return (
-        <nav className="bg-[var(--color-primary)] text-[var(--color-alice-blue)] flex flex-col content-center mt-5 mb-5">
-            <ul className="flex flex-col list-none mt-[35px]">
+        <nav className="bg-[var(--color-primary)] text-[var(--color-alice-blue)] flex flex-col my-5">
+            <ul className="flex flex-col list-none mt-6">
                 <MenuItem title="Home"
                     route="/"
                     iconName="home" />
@@ -28,7 +28,7 @@ export default function LeftNavigation() {
 function MenuItem(
     { title, route, iconName }: MenuItemProps
 ) {
-    let className = `flex no-underline text-inherit py-[10px] px-[25px] gap-2 items-center hover:[background-color:var(--color-light-hover)]`;
+    let className = `flex no-underline text-inherit py-2 w-44 px-4 gap-2 items-center hover:[background-color:var(--color-light-hover)]`;
 
     const location = useLocation();
     const isActive = location.pathname == route;

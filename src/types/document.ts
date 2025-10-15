@@ -28,6 +28,11 @@ export interface DocumentPanelProps {
     setIsNew: (isNew: boolean) => void;
 }
 
+export interface SortableSectionProps {
+    index: number;
+    section: SectionItemData;
+}
+
 export const DEFAULT_DOCUMENT: DocumentItemData = {
     id: -1,
     title: "New",

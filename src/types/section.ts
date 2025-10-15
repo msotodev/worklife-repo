@@ -9,7 +9,8 @@ export interface SectionItemData {
   description: string;
 }
 
-export interface SectionItemProps extends SectionItemData {
+export interface SectionItemProps {
+  section: SectionItemData;
   setSection?: (item: SectionItemData) => void;
   addSection?: (item: SectionItemData) => void;
 }
